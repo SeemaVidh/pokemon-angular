@@ -1,0 +1,84 @@
+$background-color: #f0f4f8;
+$active-tab-bg: #e0e4e8;
+$active-tab-color: #333;
+$inactive-tab-color: #777;
+$primary-color: #4a90e2;
+$text-color: #333;
+
+.pokemon-detail-container {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .tab {
+      flex: 1;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 10px 10px 0 0;
+      background-color: #fff;
+      transition: background-color 0.3s, color 0.3s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+      &.active {
+        background-color: $active-tab-bg;
+        color: $active-tab-color;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      &:not(.active):hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+
+  .details,
+  .evolution {
+    text-align: center;
+
+    h2 {
+      font-size: 2em;
+      color: $text-color;
+    }
+
+    .pokemon-image {
+      border-radius: 10px;
+      border: 2px solid $primary-color;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin-top: 20px;
+      color: $text-color;
+    }
+
+    p {
+      color: $text-color;
+      font-size: 1.1em;
+    }
+  }
+
+  .back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}

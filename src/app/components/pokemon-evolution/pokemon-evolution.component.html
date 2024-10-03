@@ -1,0 +1,10 @@
+<div *ngIf="evolutionChain" class="evolution-container">
+  <h3>Evolution Chain</h3>
+  <div class="evolution-grid">
+    <div *ngFor="let stage of getEvolutionStages(evolutionChain.chain) "
+      [class.current]="stage.url.split('/').slice(-2, -1) == currentPokemonId" class="evolution-stage">
+      <img [src]="getPokemonImageUrl(stage.url) " alt="{{ stage.name }}">
+      <span>{{ stage.name }}</span>
+    </div>
+  </div>
+</div>

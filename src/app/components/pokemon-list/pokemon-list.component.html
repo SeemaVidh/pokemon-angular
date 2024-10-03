@@ -1,0 +1,13 @@
+<div *ngIf="loading$ | async" class="loader">Loading...</div>
+<div class="pokemon-grid" *ngIf="!(loading$ | async)">
+  <div *ngFor="let pokemon of pokemons$ | async" class="pokemon-card" [routerLink]="['/pokemon', pokemon.id]">
+    <img [src]="pokemon.sprites.other.dream_world.front_default" alt="{{ pokemon.name }}">
+    <h3>{{ pokemon.name }}</h3>
+  </div>
+</div>
+<div class="pagination" *ngIf="!(loading$ | async)">
+  <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">«</button>
+  <button *ngFor="let page of pages" (click)="onPageChange(page)" [class.active]="page === currentPage">{{ page
+    }}</button>
+  <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">»</button>
+</div>

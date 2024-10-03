@@ -1,0 +1,25 @@
+<div *ngIf="pokemonDetail$ | async as pokemonDetail" class="pokemon-detail-container">
+
+  <div class="tabs">
+    <div (click)="selectTab('details')" [class.active]="selectedTab === 'details'" class="tab">Details</div>
+    <div (click)="selectTab('evolution')" [class.active]="selectedTab === 'evolution'" class="tab">Evolution</div>
+  </div>
+
+  <div *ngIf="selectedTab === 'details'" class="details">
+    <h2>{{ pokemonDetail.name }}</h2>
+    <img [src]="pokemonDetail.sprites.other.dream_world.front_default" alt="{{ pokemonDetail.name }}"
+      class="pokemon-image">
+    <h3>Details</h3>
+    <p>Height: {{ pokemonDetail.height }}</p>
+    <p>Weight: {{ pokemonDetail.weight }}</p>
+    <p>Base Experience: {{ pokemonDetail.base_experience }}</p>
+  </div>
+
+  <div *ngIf="selectedTab === 'evolution'" class="evolution">
+    <app-pokemon-evolution [evolutionChain]="evolutionChain$ | async"
+      [currentPokemonId]="currentPokemonId"></app-pokemon-evolution>
+  </div>
+
+  <button class="back-button" (click)="goBack()"> <i
+      class="fa-sharp fa-arrow-left-long fa-light mx-2 ar-invert-icon"></i>Back</button>
+</div>
